@@ -1,0 +1,68 @@
+<script type="text/javascript">
+    RED.nodes.registerType('nexmo-out',{
+        category: 'social-output',
+        color: '#3FADB5',
+        defaults: {
+            name: {value:""},
+            account: {type: "nexmo-config"},
+            from: {value:""},
+            to: {value:""},
+            message: {value:""},
+            ref: {value:""},
+            protocol: {value: "http"}
+        },
+        inputs:1,
+        outputs:1,
+        icon: "nexmo.png",
+        paletteLabel: "nexmo",
+        label: function() {
+            return this.name || "nexmo";
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="nexmo-out">
+    <div class="form-row">
+        <label for="node-input-from"><i class="fa fa-list"></i> From</label>
+        <input type="text" id="node-input-from" placeholder="15552345678">
+    </div>
+    <div class="form-row">
+        <label for="node-input-to"><i class="fa fa-envelope"></i> To</label>
+        <input type="text" id="node-input-to" placeholder="15556672883">
+    </div>
+    <div class="form-row">
+        <label for="node-input-message"><i class="fa fa-envelope"></i> Message</label>
+        <input type="text" id="node-input-message" placeholder="">
+    </div>
+    <div class="form-row">
+        <label for="node-input-ref"><i class="fa fa-tag"></i> Client ref</label>
+        <input type="text" id="node-input-ref" placeholder="">
+    </div>
+    <div class="form-row">
+        <label for="node-config-input-protocol"><i class="fa fa-lock"></i> Use SSL</label>
+        <select id="node-config-input-protocol">
+            <option value="http" selected="selected">No</option>
+            <option value="https">Yes</option>
+        </select>
+    </div>
+    <div class="form-row">
+        <label for="node-input-account"><i class="icon-globe"></i> Account</label>
+        <input type="text" id="node-input-account" placeholder="Nexmo account">
+    </div>
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="nexmo-out">
+    <p>A node that sends text messages via the Nexmo service</p>
+    <p>The configured properties can be overridden by the following properties enclosed in the <code>msg</code>:</p>
+    <ul>
+        <li><code>msg.from</code>: the number on behalf of which to send the SMS (i.e. the sender)</li>
+        <li><code>msg.to</code>: the number to send the SMS to (i.e. the recipient)</li>
+        <li><code>msg.message</code>: the message to send</li>
+        <li><code>msg.clientRef</code>: a custom reference to include in the request</li>
+    </ul>
+    <p>The response received from Nexmo will be stored in <code>msg.payload</code>.</p>
+</script>

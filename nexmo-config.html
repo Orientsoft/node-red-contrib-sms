@@ -1,0 +1,41 @@
+<script type="text/javascript">
+    RED.nodes.registerType('nexmo-config',{
+        category: 'config',
+        defaults: {
+            name: {value:""},
+            from: {value:"", required: true}
+        },
+        credentials: {
+            apiKey: {type:"text", required: true},
+            apiSecret: {type:"text", required: true}
+        },
+        inputs:0,
+        outputs:0,
+        label: function() {
+            return this.name || "nexmo";
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="nexmo-config">
+    <div class="form-row">
+        <label for="node-config-input-from"><i class="fa fa-hashtag"></i> From number</label>
+        <input type="text" id="node-config-input-from" placeholder="">
+    </div>
+    <div class="form-row">
+        <label for="node-config-input-apiKey"><i class="fa fa-eye"></i> API Key</label>
+        <input type="text" id="node-config-input-apiKey" placeholder="">
+    </div>
+    <div class="form-row">
+        <label for="node-config-input-apiSecret"><i class="fa fa-trademark"></i> API Secret</label>
+        <input type="text" id="node-config-input-apiSecret" placeholder="">
+    </div>
+    <div class="form-row">
+        <label for="node-config-input-name"><i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-config-input-name" placeholder="Name">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="nexmo-config">
+    <p>A node that configures the Nexmo connector</p>
+</script>
